@@ -35,6 +35,7 @@ proxy_read_timeout 86400;
 | [`nginx-cosl-bff.example.conf`](nginx-cosl-bff.example.conf) | Contoh `server` + `location /api/` ke Nuxt dengan header WS |
 | [`nginx-cosl-bff-ws-map.snippet.conf`](nginx-cosl-bff-ws-map.snippet.conf) | `map $http_upgrade $connection_upgrade` — include sekali di `http { }` jika ingin memakai `Connection $connection_upgrade` (opsional, lebih rapi untuk trafik campuran) |
 | [`nginx-auth.example.conf`](nginx-auth.example.conf) | Contoh site terpisah untuk host Zitadel |
+| [`file-storage-setup/gateway/nginx-cosl-storage.example.conf`](../../file-storage-setup/gateway/nginx-cosl-storage.example.conf) | Storage subdomain untuk presigned browser PUT (SeaweedFS S3) — **canonical copy** |
 
 ### Setelah mengubah config
 
