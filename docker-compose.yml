@@ -264,15 +264,7 @@ services:
       - postgres-data:/var/lib/postgresql/data:rw
     networks:
       - zitadel
-  lark-proxy:
-    build: ./lark-proxy
-    restart: unless-stopped
-    dns:
-      - 1.1.1.1
-      - 8.8.8.8
-    networks:
-      - zitadel
-      
+  
   redis:
     image: ${REDIS_IMAGE}
     restart: unless-stopped
