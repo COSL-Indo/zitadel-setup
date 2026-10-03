@@ -1,6 +1,6 @@
 # Checklist deploy Zitadel di VM (VM2 + gateway VM3)
 
-Dokumen ini mewujudkan langkah dari rencana deploy VM: URL konsisten, `.env`, HTTPS lewat gateway, firewall, SMTP opsional, OIDC, dan `lark-proxy`.
+Dokumen ini mewujudkan langkah dari rencana deploy VM: URL konsisten, `.env`, HTTPS lewat gateway, firewall, SMTP opsional, dan OIDC.
 
 ## 1. Tentukan alamat yang dipakai user (issuer)
 
@@ -30,7 +30,7 @@ Contoh blok server terpisah untuk hostname auth: lihat [`gateway/nginx-auth.exam
 
 - **VM2**: izinkan inbound (TCP) ke port publish Traefik (mis. **8080**) hanya dari **VM3** (dan dari **VM1** jika backend memanggil Zitadel lewat IP internal).
 - **VM4 (Postgres app)**: jika dipakai terpisah, batasi `5432` hanya dari klien yang berhak (bukan topik stack ini jika Postgres Zitadel tetap di compose VM2).
-- Jangan commit **`.env`**, **`login-client.pat`**, atau token Lark — lihat `.gitignore`.
+- Jangan commit **`.env`** atau **`login-client.pat`** — lihat `.gitignore`.
 
 ## 5. Email (SMTP)
 
@@ -41,12 +41,6 @@ Contoh blok server terpisah untuk hostname auth: lihat [`gateway/nginx-auth.exam
 
 - Di Console Zitadel: buat **Application** (OIDC), catat **issuer** (biasanya `https://auth.../`), client id/secret, redirect URI sesuai app Anda.
 - Samakan konfigurasi di backend/frontend (mis. `config.json` / env di repo COSL backend Anda) dengan issuer dan redirect URI tersebut.
-
-## 7. `lark-proxy`
-
-- Service ini (Go) memproses alur token/userinfo Lark (port **4000** di dalam container). Endpoint dan env: [lark-proxy/README.md](lark-proxy/README.md).
-- Secara default **tidak** dipublish ke host; akses dari stack Docker atau tambahkan `ports` di `docker-compose.yml` jika harus dicapai dari luar (batasi firewall).
-- Simpan **client secret** / token Lark di env terpisah dan jangan commit.
 
 ## Verifikasi cepat
 

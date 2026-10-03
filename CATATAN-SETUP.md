@@ -155,7 +155,7 @@ Catatan:
 
 ## Setup untuk SERVER (Production)
 
-Checklist tambahan (VM2 + gateway VM3, firewall, OIDC, `lark-proxy`): lihat [VM-DEPLOY.md](VM-DEPLOY.md).
+Checklist tambahan (VM2 + gateway VM3, firewall, OIDC): lihat [VM-DEPLOY.md](VM-DEPLOY.md).
 
 ### Yang WAJIB Diubah
 
